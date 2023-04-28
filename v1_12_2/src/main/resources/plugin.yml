@@ -1,9 +1,9 @@
 name: DP-GiftBox
 version: 1.0.0.5
-main: com.darksoldier1404.dgb.GiftBox
-authors: [ DEAD_POOLIO_ ]
+main: com.licker2689.lgb.GiftBox
+authors: [ LICKER2689 ]
 depend:
-  - DPP-Core
+  - LP-Core
 commands:
   선물박스:
-    aliases: [dgb]
+    aliases: [lgb]
