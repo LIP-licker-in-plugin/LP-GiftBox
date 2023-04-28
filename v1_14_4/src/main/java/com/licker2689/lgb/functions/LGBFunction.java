@@ -1,11 +1,11 @@
-package com.darksoldier1404.dgb.functions;
+package com.licker2689.lgb.functions;
 
-import com.darksoldier1404.dgb.GiftBox;
-import com.darksoldier1404.dppc.api.inventory.DInventory;
-import com.darksoldier1404.dppc.utils.ColorUtils;
-import com.darksoldier1404.dppc.utils.ConfigUtils;
-import com.darksoldier1404.dppc.utils.NBT;
-import com.darksoldier1404.dppc.utils.Tuple;
+import com.licker2689.lgb.GiftBox;
+import com.licker2689.lpc.api.inventory.LInventory;
+import com.licker2689.lpc.utils.ColorUtils;
+import com.licker2689.lpc.utils.ConfigUtils;
+import com.licker2689.lpc.utils.NBT;
+import com.licker2689.lpc.utils.Tuple;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,7 +16,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.*;
 
 @SuppressWarnings("all")
-public class DGBFunction {
+public class LGBFunction
+ {
     private static final GiftBox plugin = GiftBox.getInstance();
 
     public static void createGiftBox(Player p, String name) {
@@ -44,7 +45,7 @@ public class DGBFunction {
             p.sendMessage(plugin.prefix + "존재하지 않는 선물박스입니다.");
             return;
         }
-        DInventory inv = new DInventory(null, "선물박스 쿠폰 설정", 27, plugin);
+        LInventory inv = new LInventory(null, "선물박스 쿠폰 설정", 27, plugin);
         inv.setObj(Tuple.of(name, SettingType.COUPON));
         ItemStack pane = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         for (int i = 0; i < inv.getSize(); i++) {
@@ -63,7 +64,7 @@ public class DGBFunction {
             p.sendMessage(plugin.prefix + "존재하지 않는 선물박스입니다.");
             return;
         }
-        DInventory inv = new DInventory(null, "선물박스 상자 설정", 54, plugin);
+        LInventory inv = new LInventory(null, "선물박스 상자 설정", 54, plugin);
         inv.setObj(Tuple.of(name, SettingType.PRIZE));
         if (plugin.config.get("GiftBoxs." + name + ".Prize") != null) {
             for (String key : plugin.config.getConfigurationSection("GiftBoxs." + name + ".Prize").getKeys(false)) {
@@ -88,14 +89,14 @@ public class DGBFunction {
         saveConfig();
     }
 
-    public static void saveCouponSetting(Player p, DInventory inv) {
+    public static void saveCouponSetting(Player p, LInventory inv) {
         String name = ((Tuple<String, SettingType>) inv.getObj()).getA();
         plugin.config.set("GiftBoxs." + name + ".Coupon", inv.getItem(13));
         p.sendMessage(plugin.prefix + "쿠폰이 저장되었습니다.");
         saveConfig();
     }
 
-    public static void savePrizeSetting(Player p, DInventory inv) {
+    public static void savePrizeSetting(Player p, LInventory inv) {
         String name = ((Tuple<String, SettingType>) inv.getObj()).getA();
         for (int i = 0; i < inv.getSize(); i++) {
             if (inv.getItem(i) != null) {

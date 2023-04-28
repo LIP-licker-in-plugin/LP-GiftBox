@@ -1,4 +1,4 @@
-name: DP-GiftBox
+name: LP-GiftBox
 on:
   push:
 jobs:
